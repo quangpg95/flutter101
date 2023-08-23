@@ -1,40 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_101/bloc/counter_cubit.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_101/presentation/screens/second_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import '../../bloc/counter_cubit.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterCubit(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key, required this.title, required this.color});
 
   final String title;
+  final Color color;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -62,14 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).increment();
+                      BlocProvider.of<CounterCubit>(context).decrement();
                     },
-                    child: const Icon(Icons.add)),
+                    child: const Icon(Icons.exposure_minus_1)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: BlocConsumer<CounterCubit, CounterState>(
                     listener: (context, state) {
-                      final snackBar = SnackBar(content: Text(state.countValue.toString()));
+                      final snackBar =
+                          SnackBar(content: Text(state.incremented.toString()));
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     builder: (context, state) {
@@ -83,11 +65,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).decrement();
+                      BlocProvider.of<CounterCubit>(context).increment();
                     },
-                    child: const Icon(Icons.exposure_minus_1))
+                    child: const Icon(Icons.add))
               ],
             ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SecondScreen(
+                  title: 'Second Screen', color: Colors.redAccent,
+                )));
+              },
+              child: Text('go to second screen'),
+              color: widget.color,
+            )
           ],
         ),
       ),
