@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_101/presentation/router/app_router.dart';
+import 'package:flutter_101/presentation/screens/third_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/counter_cubit.dart';
@@ -27,7 +28,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -49,9 +50,9 @@ class _SecondScreenState extends State<SecondScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: BlocConsumer<CounterCubit, CounterState>(
                     listener: (context, state) {
-                      final snackBar =
-                          SnackBar(content: Text(state.incremented.toString()));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // final snackBar =
+                      //     SnackBar(content: Text(state.incremented.toString()));
+                      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     builder: (context, state) {
                       print(state.countValue.toString());
@@ -64,22 +65,24 @@ class _SecondScreenState extends State<SecondScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).increment();
+                      context.read<CounterCubit>().increment();
                     },
                     child: const Icon(Icons.add))
               ],
             ),
             MaterialButton(
-                onPressed: () {},
-                child: Text('go to third screen'),
-                color: widget.color
-            )
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRouter.thirdScreen);
+                },
+                color: widget.color,
+                child: Text('Go to third screen'))
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
+        backgroundColor: widget.color,
         child: const Icon(Icons.add),
       ),
     );

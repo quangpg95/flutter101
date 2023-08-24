@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_101/presentation/router/app_router.dart';
 import 'package:flutter_101/presentation/screens/second_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -50,9 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: BlocConsumer<CounterCubit, CounterState>(
                     listener: (context, state) {
-                      final snackBar =
-                          SnackBar(content: Text(state.incremented.toString()));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // final snackBar =
+                      //     SnackBar(content: Text(state.incremented.toString()));
+                      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     builder: (context, state) {
                       print(state.countValue.toString());
@@ -65,19 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).increment();
+                      context.read<CounterCubit>().increment();
                     },
                     child: const Icon(Icons.add))
               ],
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SecondScreen(
-                  title: 'Second Screen', color: Colors.redAccent,
-                )));
+                Navigator.of(context).pushNamed(AppRouter.secondScreen);
               },
-              child: Text('go to second screen'),
               color: widget.color,
+              child: const Text('Go to second screen'),
             )
           ],
         ),
@@ -85,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
+        backgroundColor: widget.color,
         child: const Icon(Icons.add),
       ),
     );
