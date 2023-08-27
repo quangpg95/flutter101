@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_101/presentation/router/app_router.dart';
 import 'package:flutter_101/presentation/screens/second_screen.dart';
+import 'package:flutter_101/theme/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../bloc/counter_cubit.dart';
 
@@ -35,9 +37,24 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+             Text(
+              'Body Medium',
             ),
+            Text(
+              'Title Medium',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+             Text(
+              'Nhu cầu vay vốn của bạn',
+               style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            Text(
+              '200.000.000',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                color: primaryColor500
+              ),
+            ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -45,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       BlocProvider.of<CounterCubit>(context).decrement();
                     },
-                    child: const Icon(Icons.exposure_minus_1)),
+                    child:  Icon(Icons.exposure_minus_1)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: BlocConsumer<CounterCubit, CounterState>(
@@ -70,20 +87,28 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const Icon(Icons.add))
               ],
             ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRouter.secondScreen);
-              },
-              color: widget.color,
-              child: const Text('Go to second screen'),
-            )
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Elevate Button'),
+            ),
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text('Outline Button'),
+            ),
+            FilledButton(
+              onPressed: () {},
+              child: const Text('Tiếp tục'),
+            ),
+            FilledButton(
+              onPressed: null,
+              child: const Text('Tiếp tục'),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        backgroundColor: widget.color,
         child: const Icon(Icons.add),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_101/presentation/router/app_router.dart';
 import 'package:flutter_101/presentation/screens/third_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../bloc/counter_cubit.dart';
 
@@ -72,7 +73,9 @@ class _SecondScreenState extends State<SecondScreen> {
             ),
             MaterialButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(AppRouter.thirdScreen);
+                  Map<String, String> pathParameters = <String, String>{}
+                    ..addEntries(List.of([const MapEntry("title", 'Third Screen')]));
+                  context.pushNamed(AppRouter.thirdScreen, pathParameters: pathParameters);
                 },
                 color: widget.color,
                 child: Text('Go to third screen'))
