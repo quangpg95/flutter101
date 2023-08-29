@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 const Color primaryColor500 = Color(0xFF0070F4);
 const Color primaryColor700 = Color(0xFF004392);
-const Color secondaryColor = Color(0xFF525D6A);
+
 const Color defaultTextColor = Color(0xFF15171A);
+const Color regularTextColor = Color(0xFF3E464F);
+const Color captionRETextColor = Color(0xFF525D6A);
 
 
 const lightColorScheme = ColorScheme(

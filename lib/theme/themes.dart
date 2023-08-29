@@ -7,20 +7,23 @@ ThemeData lendingLightTheme = ThemeData(
     colorScheme: lightColorScheme,
     useMaterial3: true,
     textTheme: const TextTheme(
+      // Body/L
       bodyLarge: TextStyle(
         fontFamily: 'InterRegular',
         fontSize: 16,
         color: defaultTextColor,
       ),
+      // Body/M-RE
       bodyMedium: TextStyle(
         fontFamily: 'InterRegular',
         fontSize: 14,
-        color: defaultTextColor,
+        color: regularTextColor,
       ),
+      // Caption RE
       bodySmall: TextStyle(
         fontFamily: 'InterRegular',
         fontSize: 12,
-        color: defaultTextColor,
+        color: captionRETextColor,
       ),
       labelLarge: TextStyle(
         fontFamily: 'InterMedium',
@@ -42,20 +45,23 @@ ThemeData lendingLightTheme = ThemeData(
         fontSize: 22,
         color: defaultTextColor,
       ),
+      // Label/L
       titleMedium: TextStyle(
         fontFamily: 'InterMedium',
         fontSize: 16,
         color: defaultTextColor,
       ),
+      // Label/M
       titleSmall: TextStyle(
         fontFamily: 'InterMedium',
         fontSize: 14,
-        color: defaultTextColor,
+        color: regularTextColor,
       ),
+      // Headline M
       headlineSmall: TextStyle(
-        fontFamily: 'InterExtraBold',
+        fontFamily: 'InterBold',
         fontSize: 24,
-        color: primaryColor700,
+        color: defaultTextColor,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
