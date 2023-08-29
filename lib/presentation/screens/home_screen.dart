@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_101/extension/hex_color.dart';
 import 'package:flutter_101/presentation/router/app_router.dart';
 import 'package:flutter_101/presentation/screens/second_screen.dart';
 import 'package:flutter_101/theme/colors.dart';
+import 'package:flutter_101/theme/typography.dart';
+import 'package:flutter_101/utils/app_images.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../bloc/counter_cubit.dart';
@@ -30,8 +34,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: widget.color,
-        title: Text(widget.title),
+
+        leading: IconButton(
+          icon: SvgPicture.asset(AppImages.icBack),
+          color: defaultTextColor ,
+          onPressed: (){},
+        ),
+        backgroundColor: Colors.white,
+        title: Text(style: KiotVietTextStyle.titleXL, 'Đăng ký vay'),
       ),
       body: Center(
         child: Column(
@@ -46,24 +56,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-             Text(
-              'Body Medium',
-            ),
             Text(
-              'Title Medium',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-             Text(
               'Nhu cầu vay vốn của bạn',
-               style: Theme.of(context).textTheme.headlineSmall,
+              style: KiotVietTextStyle.headlineM,
             ),
             Text(
               '200.000.000',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: primaryColor500
-              ),
+              style: KiotVietTextStyle.titleXL.copyWith(color: primaryColor500),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       BlocProvider.of<CounterCubit>(context).decrement();
                     },
-                    child:  Icon(Icons.exposure_minus_1)),
+                    child: Icon(Icons.exposure_minus_1)),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: BlocConsumer<CounterCubit, CounterState>(

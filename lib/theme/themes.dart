@@ -1,68 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_101/extension/hex_color.dart';
 import 'package:flutter_101/theme/colors.dart';
+import 'package:flutter_101/theme/typography.dart';
 
 ThemeData lendingLightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: lightColorScheme,
+    appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(color: defaultTextColor)
+    ),
     useMaterial3: true,
-    textTheme: const TextTheme(
+    textTheme: TextTheme(
       // Body/L
-      bodyLarge: TextStyle(
-        fontFamily: 'InterRegular',
-        fontSize: 16,
-        color: defaultTextColor,
-      ),
+      bodyLarge: KiotVietTextStyle.bodyL,
       // Body/M-RE
-      bodyMedium: TextStyle(
-        fontFamily: 'InterRegular',
-        fontSize: 14,
-        color: regularTextColor,
-      ),
+      bodyMedium: KiotVietTextStyle.bodyMRE,
       // Caption RE
-      bodySmall: TextStyle(
-        fontFamily: 'InterRegular',
-        fontSize: 12,
-        color: captionRETextColor,
-      ),
-      labelLarge: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 14,
-        color: defaultTextColor,
-      ),
-      labelMedium: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 12,
-        color: defaultTextColor,
-      ),
-      labelSmall: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 11,
-        color: defaultTextColor,
-      ),
-      titleLarge: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 22,
-        color: defaultTextColor,
-      ),
+      bodySmall: KiotVietTextStyle.captionRE,
       // Label/L
-      titleMedium: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 16,
-        color: defaultTextColor,
-      ),
+      titleMedium: KiotVietTextStyle.labelL,
       // Label/M
-      titleSmall: TextStyle(
-        fontFamily: 'InterMedium',
-        fontSize: 14,
-        color: regularTextColor,
-      ),
+      titleSmall: KiotVietTextStyle.labelM,
       // Headline M
-      headlineSmall: TextStyle(
-        fontFamily: 'InterBold',
-        fontSize: 24,
-        color: defaultTextColor,
-      ),
+      headlineSmall: KiotVietTextStyle.headlineM,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -78,5 +37,4 @@ ThemeData lendingLightTheme = ThemeData(
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
       foregroundColor: primaryColor500,
-    ))
-);
+    )));
