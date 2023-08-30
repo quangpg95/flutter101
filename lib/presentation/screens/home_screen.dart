@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_101/extension/hex_color.dart';
-import 'package:flutter_101/presentation/router/app_router.dart';
-import 'package:flutter_101/presentation/screens/second_screen.dart';
+import 'package:flutter_101/presentation/widgets/general_app_bar.dart';
 import 'package:flutter_101/theme/colors.dart';
 import 'package:flutter_101/theme/typography.dart';
 import 'package:flutter_101/utils/app_images.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../bloc/counter_cubit.dart';
 
@@ -33,22 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-        leading: IconButton(
-          icon: SvgPicture.asset(AppImages.icBack),
-          color: defaultTextColor ,
-          onPressed: (){},
-        ),
-        backgroundColor: Colors.white,
-        title: Text(style: KiotVietTextStyle.titleXL, 'Đăng ký vay'),
-      ),
+      appBar: GeneralAppBar(onTapBack: () => Navigator.pop(context),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),

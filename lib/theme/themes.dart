@@ -6,7 +6,7 @@ ThemeData lendingLightTheme = ThemeData(
     brightness: Brightness.light,
     colorScheme: lightColorScheme,
     appBarTheme: const AppBarTheme(
-      iconTheme: IconThemeData(color: defaultTextColor)
+      iconTheme: IconThemeData(color: defaultTextColor),
     ),
     useMaterial3: true,
     textTheme: TextTheme(
@@ -37,4 +37,12 @@ ThemeData lendingLightTheme = ThemeData(
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
       foregroundColor: primaryColor500,
-    )));
+    )),
+    bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.white,
+        modalBackgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0))))
+);
